@@ -1,0 +1,1 @@
+roslaunch robot1_description display.launch model:="$(rospack find robot1_description)/urdf/robot1.urdf" gui:=true
