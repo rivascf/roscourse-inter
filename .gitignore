@@ -1,5 +1,3 @@
 CMakeLists.txt
 .vscode/
-scorbot_er4u_description/
 puma560_robot/
-gp7_visualization/
