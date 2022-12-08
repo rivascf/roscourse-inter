@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<launch>
+	<arg name="name" default="puma560" />
+	<!-- Cargamos el archivo de configuracion desde el archivo YAML al servidor de parametros -->
+	<rosparam file="$(find puma560_robot)/config/position_controllers.yaml" command="load" ns="/puma560" />
+	<arg name="arm_controllers" default="joint_state_controller
+										 joint_pos_controller_waist
+										 joint_pos_controller_shoulder
+										 joint_pos_controller_elbow
+										 joint_pos_controller_wrist_bend
+										 joint_pos_controller_wrist_roll" />
+	<node name="arm_controller_spawner"	pkg="controller_manager" type="spawner" respawn="false" output="screen"
+		args="$(arg arm_controllers)" ns="/puma560" />	
+	<!-- Definimos las interfaces de hardware para las articulaciones -->	
+	<arg name="arms_hardware_interface" default="PositionJointInterface" />	
+	<!-- Definimos los parametros del URDF -->
+	<param name="robot_description" textfile="$(find puma560_robot)/urdf/puma560_position.urdf" />
+	<arg name="puma560_initial_position" default="-J joint_base_to_waist 0.0
+												  -J joint_waist_to_shoulder 0.0
+												  -J joint_shoulder_to_elbow -1.5708
+												  -J joint_elbow_to_wrist_bend 0.0
+												  -J joint_wrist_bend_to_roll 0.0"	/>
+	<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+		args="-urdf -model puma560 -param robot_description $(arg puma560_initial_position) -unpause"
+		respawn="false" output="screen" />
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="paused" value="true" />
+		<arg name="use_sim_time" value="true" />
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false" />
+	</include>	 
+	<node name="puma560_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<rosparam param="source_list">["/puma560/joint_states"]</rosparam>
+	</node>	
+	<node name="puma560_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="rqt_publisher" pkg="rqt_publisher" type="rqt_publisher" />										  						 
+</launch>

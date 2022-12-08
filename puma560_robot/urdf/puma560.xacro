@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<robot name="puma560" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+    <!-- Includes  -->
+    <xacro:include filename="$(find puma560_robot)/urdf/puma560_parameters.xacro" />
+    <xacro:include filename="$(find puma560_robot)/urdf/puma560_links_joints.xacro" />
+
+
+
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/puma560</robotNamespace>
+        </plugin>
+    </gazebo>
+
+</robot>

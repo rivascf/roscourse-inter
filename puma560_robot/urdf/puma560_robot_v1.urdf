@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="puma560">
+  <!-- Dummy link declaration -->
+  <link name="world" />
+  <joint name="joint_world" type="fixed">
+  	<parent link="world"/>
+  	<child link="base_link"/>
+  </joint>	
+
+
+  <!-- Robot declaration -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-9.5399E-11 0.021962 0.19252"
+        rpy="0 0 0" />
+      <mass
+        value="15.787" />
+      <inertia
+        ixx="0.55024"
+        ixy="-2.863E-11"
+        ixz="-1.6743E-10"
+        iyy="0.50424"
+        iyz="0.022162"
+        izz="0.16071" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/base_link.STL" />
+      </geometry>
+      <material
+        name="white">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="waist_link">
+    <inertial>
+      <origin
+        xyz="0.022505 1.5634E-07 -0.0027897"
+        rpy="0 0 0" />
+      <mass
+        value="4.4341" />
+      <inertia
+        ixx="0.013316"
+        ixy="1.005E-08"
+        ixz="-0.00027854"
+        iyy="0.027328"
+        iyz="-7.7933E-09"
+        izz="0.027164" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/waist_link.STL" />
+      </geometry>
+      <material
+        name="white">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/waist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_base_to_waist"
+    type="revolute">
+    <origin
+      xyz="0 0 0.62357"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="waist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.7925"
+      upper="2.7925"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="shoulder">
+    <inertial>
+      <origin
+        xyz="0.082737 -4.6775E-05 -0.0031596"
+        rpy="0 0 0" />
+      <mass
+        value="16.847" />
+      <inertia
+        ixx="0.09723"
+        ixy="-7.8859E-06"
+        ixz="-0.0043475"
+        iyy="0.59657"
+        iyz="-4.8383E-05"
+        izz="0.65976" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="ecolor">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_waist_to_shoulder"
+    type="revolute">
+    <origin
+      xyz="0.21844 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="waist_link" />
+    <child
+      link="shoulder" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.9199"
+      upper="1.9199"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="elbow_link">
+    <inertial>
+      <origin
+        xyz="0.088774 1.1788E-06 1.5623E-06"
+        rpy="0 0 0" />
+      <mass
+        value="4.6025" />
+      <inertia
+        ixx="0.0091916"
+        ixy="-4.837E-07"
+        ixz="2.2739E-06"
+        iyy="0.082615"
+        iyz="-3.6529E-07"
+        izz="0.087355" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/elbow_link.STL" />
+      </geometry>
+      <material
+        name="white">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/elbow_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_shoulder_to_elbow"
+    type="revolute">
+    <origin
+      xyz="0.4318 0 -0.0889"
+      rpy="0 0 0" />
+    <parent
+      link="shoulder" />
+    <child
+      link="elbow_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.3562"
+      upper="2.3562"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_bend_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.02757"
+        rpy="0 0 0" />
+      <mass
+        value="0.47079" />
+      <inertia
+        ixx="0.00073772"
+        ixy="4.6144E-21"
+        ixz="3.7347E-20"
+        iyy="0.00077289"
+        iyz="1.5125E-19"
+        izz="0.00046683" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/wrist_bend_link.STL" />
+      </geometry>
+      <material
+        name="scolor">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/wrist_bend_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_elbow_to_wrist_bend"
+    type="revolute">
+    <origin
+      xyz="0.37211 0 0"
+      rpy="0 1.5708 0" />
+    <parent
+      link="elbow_link" />
+    <child
+      link="wrist_bend_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.7453"
+      upper="1.7453"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_roll_link">
+    <inertial>
+      <origin
+        xyz="3.9262E-10 -0.010974 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.077406" />
+      <inertia
+        ixx="4.3032E-05"
+        ixy="-1.1303E-12"
+        ixz="-1.2065E-11"
+        iyy="1.6966E-05"
+        iyz="1.2248E-20"
+        izz="4.5414E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/visual/wrist_roll_link.STL" />
+      </geometry>
+      <material
+        name="dcolor">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://puma560_robot/meshes/collision/wrist_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_wrist_bend_to_roll"
+    type="revolute">
+    <origin
+      xyz="0 0 0.059979"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="wrist_bend_link" />
+    <child
+      link="wrist_roll_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.094395102"
+      upper="2.094395102"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

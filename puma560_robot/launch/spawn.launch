@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<group ns="puma560">
+		<!-- Robot model -->
+		<param name="robot_description" textfile="$(find puma560_robot)/urdf/puma560_robot_v2.urdf"/>
+		<!-- Spawn robot -->
+		<node name="puma560_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+			args="-urdf -param robot_description -model puma560 -x 0 -y 0 -z 0"/>
+		<rosparam command="load" file="$(find puma560_robot)/config/joints.yaml"/>
+	</group>
+</launch>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<param name="robot_description" textfile="$(find puma560_robot)/urdf/puma560_pos.urdf" />
+	<rosparam file="$(find puma560_robot)/config/arm_controller.yaml" command="load"/>
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/puma560" args="arm_controller  
+											joint_state_controller"/>
+</launch>

@@ -1,0 +1,44 @@
+# Configuracion de controladores de posicion
+puma560:
+  # Joint State controller 
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50   # 50 Hz
+
+  # Position Controllers
+  #joint_waist_position_controller:
+  #  type: position_controllers/JointPositionController
+  #  joint: joint_base_to_waist
+  #  pid: {p: 100.00, i: 0.01, d: 10.0 }  
+  #joint_shoulder_position_controller:
+  #  type: position_controllers/JointPositionController
+  #  joint: joint_waist_to_shoulder
+  #  pid: {p: 100.00, i: 0.01, d: 10.0 }  
+  #joint_elbow_position_controller:
+  #  type: position_controllers/JointPositionController
+  #  joint: joint_shoulder_to_elbow  
+  #  pid: {p: 100.00, i: 0.01, d: 10.0 }  
+  #joint_wrist_bend_position_controller:
+  #  type: position_controllers/JointPositionController
+  #  joint: joint_elbow_to_wrist_bend  
+  #  pid: {p: 100.00, i: 0.01, d: 10.0 }  
+  #joint_wrist_roll_position_controller:
+  #  type: position_controllers/JointPositionController
+  #  joint: joint_wrist_bend_to_roll
+  #  pid: {p: 100.00, i: 0.01, d: 10.0 }  
+
+  # Trajectory controller
+  arm_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - joint_base_to_waist  
+      - joint_waist_to_shoulder  
+      - joint_shoulder_to_elbow  
+      - joint_elbow_to_wrist_bend  
+      - joint_wrist_bend_to_roll
+    gains:
+      joint_base_to_waist: {p: 100.00, i: 0.01, d: 10.0 } 
+      joint_waist_to_shoulder: {p: 100.00, i: 0.01, d: 10.0 }  
+      joint_shoulder_to_elbow: {p: 100.00, i: 0.01, d: 10.0 } 
+      joint_elbow_to_wrist_bend: {p: 100.00, i: 0.01, d: 10.0 } 
+      joint_wrist_bend_to_roll: {p: 100.00, i: 0.01, d: 10.0 }

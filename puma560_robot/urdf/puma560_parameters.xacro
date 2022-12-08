@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:property name="robot_ns" value="/puma560" />
+  <xacro:property name="link_00_name" value="base_link" />
+  <xacro:property name="link_01_name" value="waist_link" />
+  <xacro:property name="link_02_name" value="shoulder_link" />
+  <xacro:property name="link_03_name" value="elbow_link" />
+  <xacro:property name="link_04_name" value="wrist_bend_link" />
+  <xacro:property name="link_05_name" value="wrist_roll_link" />
+  <xacro:property name="position" value="PositionJointInterface" />
+  <xacro:property name="effort" value="EffortJointInterface" />
+</robot>

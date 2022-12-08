@@ -1,0 +1,25 @@
+#Publicar los joint states
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50 # Hertz
+
+joint1_position_controller: 
+  type: effort_controllers/JointPositionController  
+  joint: joint_base_to_waist
+  pid: {p:1000.0, i:100.0, d:500.0}
+joint2_position_controller: 
+  type: effort_controllers/JointPositionController  
+  joint: joint_waist_to_shoulder
+  pid: {p:1000.0, i:100.0, d:500.0}
+joint3_position_controller: 
+  type: effort_controllers/JointPositionController  
+  joint: joint_shoulder_to_elbow
+  pid: {p:5000.0, i:100.0, d:500.0}
+joint4_position_controller: 
+  type: effort_controllers/JointPositionController  
+  joint: joint_elbow_to_wrist_bend
+  pid: {p:2000.0, i:100.0, d:500.0}
+joint5_position_controller: 
+  type: effort_controllers/JointPositionController  
+  joint: joint_wrist_bend_to_roll
+  pid: {p:700.0, i:100.0, d:500.0}
